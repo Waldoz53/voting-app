@@ -1,9 +1,12 @@
 import express from "express"
 import sqlite3 from "sqlite3"
 import cors from "cors"
+import path from "path"
 
 const app = express()
 const db = new sqlite3.Database('./voting.db')
+const PORT = process.env.PORT || 5001
+const __dirname = import.meta.dirname;
 
 app.use(cors())
 app.use(express.json())
@@ -34,4 +37,12 @@ app.post('/vote', (req, res) => {
   })
 })
 
-app.listen(5001, () => console.log('Server running on port 5001'))
+// Serve static files from React build folder
+app.use(express.static(path.join(__dirname, "dist")));
+
+// Serve React app for any unknown routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
+
+app.listen(5001, () => console.log(`Server running on port ${PORT}`))
