@@ -5,6 +5,7 @@ function App() {
 
   return (
     <>
+      <h1>Oscar Voting 2025</h1>
       <Voting/>
     </>
   )
