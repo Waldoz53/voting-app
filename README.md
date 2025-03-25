@@ -17,7 +17,7 @@ Then run the server
 node server.js
 ```
 
-And run the file, if in dev mode
+And run the React app, if in dev mode
 ```
 npm run dev
 ```

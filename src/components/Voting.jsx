@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const Voting = () => {
   const [categories, setCategories] = useState([])
   const [nominees, setNominees] = useState([])
+  const [votedCategories, setVotedCategories] = useState(new Set())
 
   useEffect(() => {
     // fetches all categories
@@ -33,12 +34,21 @@ const Voting = () => {
   // }, [nominees])
 
   // votes for a nominee
-  const vote = async (nomineeId) => {
+  const vote = async (category, nomineeId) => {
+    if (votedCategories.has(category)) {
+      alert("You've already voted for this category!")
+      return
+    }
+
     await fetch('http://localhost:5001/vote', {
       method: "POST",
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ nomineeId })
     })
+      .then(res => res.json())
+      .then(() => {
+        setVotedCategories(prevSet => new Set(prevSet).add(category))
+      })
 
     setNominees(prevState => 
       Object.fromEntries(
@@ -61,7 +71,13 @@ const Voting = () => {
               {nominees[category.id]?.map(nominee => (
                 <li key={nominee.id}>
                   {nominee.name} - {nominee.votes}
-                  <button onClick={() => vote(nominee.id)}>Vote!</button>
+                  {!votedCategories.has(category.id) ? (
+                    <button
+                      onClick={() => vote(category.id, nominee.id)}
+                      disabled={votedCategories.has(category.id)}>
+                      Vote!
+                    </button>
+                  ) : ''}
                 </li>
               ))}
             </ul>
