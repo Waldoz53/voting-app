@@ -6,7 +6,7 @@ const db = new sqlite3.Database('./voting.db', err => {
   else console.log("Connected to SQLite Database!")
 })
 
-const categories = ["Best Picture", "Best Director", "Best Actor (Leading)", "Best Actress (Leading)", "Best Actor (Supporting", "Best Actress (Supporting)", "Best Animated Film", "Best Cinematography", "Best Visual Effects"]
+const categories = ["Best Picture", "Best Director", "Best Actor (Leading)", "Best Actress (Leading)", "Best Actor (Supporting)", "Best Actress (Supporting)", "Best Animated Film", "Best Cinematography", "Best Visual Effects"]
 
 categories.forEach(name => {
   db.run(`INSERT INTO categories (name) VALUES (?)`, [name], function(err) {
