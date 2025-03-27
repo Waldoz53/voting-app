@@ -7,6 +7,8 @@ Todo List
 1. Switch to Postgres/another DB?
 2. Clean up CSS/styles
 
+Delete voting.db (if you want votes to start at 0)
+
 Set up and seed the server in node
 ```
 node setup-db.js
@@ -20,7 +22,7 @@ Then run the server
 node server.js
 ```
 
-And run the React app, if in dev mode
+And run the React app in dev mode
 ```
 npm run dev
 ```
