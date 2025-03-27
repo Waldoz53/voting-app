@@ -32,7 +32,7 @@ const deleteAllData = () => {
 };
 
 // Choose what to delete
-deleteCategoryById(1);  // Change ID as needed
+// deleteCategoryById(1);  // Change ID as needed
 // deleteNomineeById(3); // Change ID as needed
 // deleteAllData();       // Uncomment to wipe everything
 

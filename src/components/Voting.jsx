@@ -4,10 +4,11 @@ const Voting = () => {
   const [categories, setCategories] = useState([])
   const [nominees, setNominees] = useState([])
   const [votedCategories, setVotedCategories] = useState(new Set())
+  const API_URL = "http://localhost:5001"
 
   useEffect(() => {
     // fetches all categories
-    fetch('http://localhost:5001/categories')
+    fetch(`${API_URL}/categories`)
       .then(response => response.json())
       .then(data => {
         setCategories(data)
@@ -19,7 +20,7 @@ const Voting = () => {
     // console.log("Updated categories:", categories)
     // Fetch nominees for each category
     categories.forEach(category => {
-      fetch(`http://localhost:5001/nominees/${category.id}`)
+      fetch(`${API_URL}/nominees/${category.id}`)
         .then(response => response.json())
         .then(data => {
           setNominees(prevState => ({
@@ -40,7 +41,7 @@ const Voting = () => {
       return
     }
 
-    await fetch('http://localhost:5001/vote', {
+    await fetch(`${API_URL}/vote`, {
       method: "POST",
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ nomineeId })
