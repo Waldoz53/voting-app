@@ -2,9 +2,6 @@
 
 Straight forward voting app with React for the front end, and SQLite3, Express, Node for the backend.
 
-## Work in Progress
-Todo List
-1. Clean up CSS/styles
 
 Delete voting.db (if you want votes to start at 0)
 
