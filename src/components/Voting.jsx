@@ -64,14 +64,14 @@ const Voting = () => {
   return (
     <>
     { categories.length <= 0 ? <h1>No categories available</h1> : (
-      <div>
+      <div class="categories-container">
         {categories.map(category =>(
-          <div key={category.id}>
+          <div class="category" key={category.id}>
             <h3>{category.name}</h3>
             <ul>
               {nominees[category.id]?.map(nominee => (
                 <li key={nominee.id}>
-                  {nominee.name} - {nominee.votes}
+                  <span>{nominee.name} - {nominee.votes}</span>
                   {!votedCategories.has(category.id) ? (
                     <button
                       onClick={() => vote(category.id, nominee.id)}

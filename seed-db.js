@@ -35,7 +35,7 @@ categories.forEach(name => {
         nominees = ["Zoe Saldana", "Felicity Jones"]
         break;
       case "Best Animated Film":
-        nominees = ["Flow", "Wallace and Gromit: Vengeance Most Fowl"]
+        nominees = ["Flow", "Wallace and Gromit"]
         break;
       case "Best Cinematography":
         nominees = ["The Brutalist", "Nosferatu"]
